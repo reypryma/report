@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sample.controller.LoginController;
+import sample.controller.ViewUserController;
 
 import java.io.IOException;
 
@@ -37,6 +39,9 @@ public class RunApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
+
+            LoginController controller = loader.getController();
+            controller.setRunApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,6 +57,9 @@ public class RunApp extends Application {
             this.primaryStage.close();
             viewUserStage.setScene(scene);
 
+            ViewUserController controller = loader.getController();
+            controller.setUserStage(viewUserStage);
+            viewUserStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
